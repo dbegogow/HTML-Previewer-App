@@ -19,7 +19,8 @@ body {
 }
 
 .header-container {
-    background: #E3853C;
+    background: rgb(239,79,61);
+    background: linear-gradient(90deg, rgba(239,79,61,1) 22%, rgba(203,175,37,1) 71%, rgba(232,233,33,1) 100%);
     height: 60px;
     position: fixed;
     width: 100%;
@@ -99,18 +100,9 @@ button.header-link-btn {
     transform: scale(1);
 }
 
-.nav-container .bars-container {
-    display: none;
-}
-
-.nav-container .bars-container .fa-bars {
-    color: #FFF;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
 .footer-container {
-    background: #E3853C;
+    background: rgb(251,255,150);
+    background: linear-gradient(90deg, rgba(251,255,150,1) 0%, rgba(255,65,65,1) 55%, rgba(151,157,36,1) 100%);
     position: absolute;
     width: 100%;
     bottom: 0;
