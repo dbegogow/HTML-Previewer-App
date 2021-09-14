@@ -45,3 +45,25 @@
     padding: 15px;
     overflow-y: scroll;
 }
+
+.home-page-container .btns {
+    margin-left: 8vw;
+    margin-top: 35px;
+}
+
+.home-page-container .btns a:first-child {
+    margin-right: 20px;
+}
+
+.home-page-container .btns a {
+    background: #EF852D;
+    color: #FFF;
+    padding: 5px 10px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+}
+
+.home-page-container .btns a:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
