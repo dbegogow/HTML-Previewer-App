@@ -3,7 +3,7 @@
     padding-top: 105px;
 }
 
-.home-page-container h1 {
+.home-page-container .heading {
     margin: 0;
     font-size: 1.9rem;
     text-align: center;
@@ -18,14 +18,16 @@
     column-gap: 50px;
 }
 
-.home-page-container .previewer-container .input-code label {
+.home-page-container .previewer-container .input-code-container label,
+.home-page-container .previewer-container .result-container p {
     display: inline-block;
     height: 50px;
     font-size: 1.3rem;
     padding-top: 10px;
+    margin: 0;
 }
 
-.home-page-container .previewer-container .input-code textarea {
+.home-page-container .previewer-container .input-code-container textarea {
     resize: none;
     display: block;
     height: 430px;
@@ -36,6 +38,10 @@
     padding: 15px;
 }
 
-.home-page-container .previewer-container .result {
-    background: aqua;
+.home-page-container .previewer-container .result-container div {
+    height: 430px;
+    border-radius: 10px;
+    border: 2px solid #000;
+    padding: 15px;
+    overflow-y: scroll;
 }
