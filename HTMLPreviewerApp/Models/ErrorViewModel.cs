@@ -1,5 +1,3 @@
-using System;
-
 namespace HTMLPreviewerApp.Models
 {
     public class ErrorViewModel
