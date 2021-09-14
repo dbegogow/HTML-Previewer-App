@@ -9,3 +9,33 @@
     text-align: center;
     color: #454545;
 }
+
+.home-page-container .previewer-container {
+    margin: 30px 8vw 0 8vw;
+    height: 480px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 50px;
+}
+
+.home-page-container .previewer-container .input-code label {
+    display: inline-block;
+    height: 50px;
+    font-size: 1.3rem;
+    padding-top: 10px;
+}
+
+.home-page-container .previewer-container .input-code textarea {
+    resize: none;
+    display: block;
+    height: 430px;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid #000;
+    outline: none;
+    padding: 15px;
+}
+
+.home-page-container .previewer-container .result {
+    background: aqua;
+}
