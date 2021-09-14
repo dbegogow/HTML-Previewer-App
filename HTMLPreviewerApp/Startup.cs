@@ -19,7 +19,7 @@ namespace HTMLPreviewerApp
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddDbContext<ApplicationDbContext>(options => options
+                .AddDbContext<PreviewerDbContext>(options => options
                     .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
@@ -27,7 +27,7 @@ namespace HTMLPreviewerApp
             services
                 .AddDefaultIdentity<IdentityUser>(options => options
                     .SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<PreviewerDbContext>();
 
             services.AddControllersWithViews();
         }
