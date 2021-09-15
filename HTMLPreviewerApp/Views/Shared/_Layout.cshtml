@@ -6,7 +6,7 @@
     <title>@ViewBag.Title</title>
     <link href="~/css/shared/layout.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-    
+
     @await RenderSectionAsync("IndexStyles", required: false)
 </head>
 <body>
@@ -23,6 +23,6 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
-    @await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("IndexScript", required: false)
 </body>
 </html>

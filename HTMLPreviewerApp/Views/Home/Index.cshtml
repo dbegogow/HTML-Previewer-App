@@ -12,12 +12,11 @@
     <div class="previewer-container">
         <div class="input-code-container">
             <label>Write your code here:</label>
-            <textarea></textarea>
+            <textarea id="code"></textarea>
         </div>
         <div class="result-container">
             <p>Result:</p>
-            <div>
-                Result
+            <div id="result" class="result">
             </div>
         </div>
     </div>
@@ -27,3 +26,7 @@
         <a>Check original</a>
     </div>
 </div>
+
+@section IndexScript {
+    <script type="text/javascript" src="~/js/home/index.js"></script>
+}

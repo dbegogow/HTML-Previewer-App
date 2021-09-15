@@ -36,9 +36,10 @@
     border: 2px solid #000;
     outline: none;
     padding: 15px;
+    font-size: 1.3rem;
 }
 
-.home-page-container .previewer-container .result-container div {
+.home-page-container .previewer-container .result-container .result {
     height: 430px;
     border-radius: 10px;
     border: 2px solid #000;
@@ -65,5 +66,5 @@
 
 .home-page-container .btns a:hover {
     cursor: pointer;
-    opacity: 0.8;
+    opacity: 0.9;
 }
