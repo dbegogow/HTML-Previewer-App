@@ -10,5 +10,19 @@ namespace HTMLPreviewerApp.Data
             : base(options)
         {
         }
+
+        public DbSet<Sample> Samples { get; init; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder
+                .Entity<Sample>()
+                .HasOne(s => s.User)
+                .WithMany(u => u.Samples)
+                .HasForeignKey(s => s.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            base.OnModelCreating(builder);
+        }
     }
 }
