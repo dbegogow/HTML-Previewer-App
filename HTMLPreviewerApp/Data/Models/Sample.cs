@@ -1,10 +1,17 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
+using static HTMLPreviewerApp.Data.DataConstants.Common;
+
 namespace HTMLPreviewerApp.Data.Models
 {
     public class Sample
     {
+        [Key]
+        [Required]
+        [MaxLength(IdMaxLength)]
+        public string Id { get; init; } = Guid.NewGuid().ToString();
+
         [Required]
         public string Code { get; set; }
 
