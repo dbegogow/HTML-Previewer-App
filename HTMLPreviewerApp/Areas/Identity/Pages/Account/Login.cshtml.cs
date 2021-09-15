@@ -14,8 +14,6 @@ namespace HTMLPreviewerApp.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private const string RememberMeDisplayName = "Remember Me";
-
         private readonly SignInManager<User> _signInManager;
 
         public LoginModel(SignInManager<User> signInManager)
@@ -38,9 +36,6 @@ namespace HTMLPreviewerApp.Areas.Identity.Pages.Account
             [Required(ErrorMessage = RequiredPassword)]
             [DataType(DataType.Password)]
             public string Password { get; set; }
-
-            [Display(Name = RememberMeDisplayName)]
-            public bool RememberMe { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -63,7 +58,7 @@ namespace HTMLPreviewerApp.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var result = await this._signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                var result = await this._signInManager.PasswordSignInAsync(Input.Email, Input.Password, true, lockoutOnFailure: false);
 
                 if (result.Succeeded)
                 {

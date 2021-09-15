@@ -15,6 +15,6 @@
         public const string RequiredField = "Field is required.";
 
         public const string AlreadyExistUserWithEmail = "A user with this email already exists.";
-        public const string InvalidChangeEmail = "Грешка в смяната на имейла.";
+        public const string InvalidChangeEmail = "An error occurred while changing the email.";
     }
 }
