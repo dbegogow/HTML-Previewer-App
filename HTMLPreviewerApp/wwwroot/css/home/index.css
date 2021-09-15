@@ -17,8 +17,8 @@
     grid-template-columns: repeat(2, 1fr);
     column-gap: 50px;
 }
-
-.home-page-container .previewer-container .input-code-container label,
+ 
+.home-page-container .previewer-container .input-sample-container label,
 .home-page-container .previewer-container .result-container p {
     display: inline-block;
     height: 50px;
@@ -27,7 +27,7 @@
     margin: 0;
 }
 
-.home-page-container .previewer-container .input-code-container textarea {
+.home-page-container .previewer-container .input-sample-container textarea {
     resize: none;
     display: block;
     height: 430px;
@@ -52,19 +52,20 @@
     margin-top: 35px;
 }
 
-.home-page-container .btns a:first-child {
+.home-page-container .btns .btn:first-child {
     margin-right: 20px;
 }
 
-.home-page-container .btns a {
+.home-page-container .btns .btn {
     background: #EF852D;
     color: #FFF;
-    padding: 5px 10px;
+    padding: 8px 10px;
     font-size: 1.1rem;
     border-radius: 10px;
+    border: none;
 }
 
-.home-page-container .btns a:hover {
+.home-page-container .btns .btn:hover {
     cursor: pointer;
     opacity: 0.9;
 }

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model SampleFormModel
+
+@{
     ViewBag.Title = "Render your HTML code";
 }
 
@@ -9,26 +11,28 @@
 <div class="home-page-container">
     <h1 class="heading">HTML Previewer</h1>
 
-    <div class="previewer-container">
-        <div class="input-code-container">
-            <label>Write your code here:</label>
-            <textarea id="code"></textarea>
-        </div>
-        <div class="result-container">
-            <p>Result:</p>
-            <div id="result" class="result">
+    <form method="post" asp-controller="Samples" asp-action="SaveSample">
+        <div class="previewer-container">
+            <div class="input-sample-container">
+                <label asp-for="Code">Write your code here:</label>
+                <textarea asp-for="Code" id="code"></textarea>
+            </div>
+            <div class="result-container">
+                <p>Result:</p>
+                <div id="result" class="result">
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="btns">
-        <a>Save code</a>
+        <div class="btns">
+            <input class="btn" type="submit" value="Save Code" />
 
-        @if (User.Identity.IsAuthenticated)
-        {
-            <a>Check original</a>
-        }
-    </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a class="btn">Check original</a>
+            }
+        </div>
+    </form>
 </div>
 
 @section IndexScript {

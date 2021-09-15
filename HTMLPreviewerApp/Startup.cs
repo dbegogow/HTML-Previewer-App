@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using HTMLPreviewerApp.Infrastructure;
+using HTMLPreviewerApp.Services.Samples;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -38,6 +39,9 @@ namespace HTMLPreviewerApp
                 {
                     options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
                 });
+
+            services
+                .AddTransient<ISamplesService, SamplesService>();
 
             services.AddRazorPages(options =>
             {
