@@ -1,4 +1,5 @@
 using HTMLPreviewerApp.Data;
+using Microsoft.AspNetCore.Mvc;
 using HTMLPreviewerApp.Data.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,7 +33,11 @@ namespace HTMLPreviewerApp
                 })
                 .AddEntityFrameworkStores<PreviewerDbContext>();
 
-            services.AddControllersWithViews();
+            services
+                .AddControllersWithViews(options =>
+                {
+                    options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+                });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
