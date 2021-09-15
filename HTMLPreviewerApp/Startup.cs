@@ -1,8 +1,8 @@
 using HTMLPreviewerApp.Data;
+using HTMLPreviewerApp.Data.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using HTMLPreviewerApp.Infrastructure;
 using Microsoft.Extensions.Configuration;
@@ -26,8 +26,10 @@ namespace HTMLPreviewerApp
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services
-                .AddDefaultIdentity<IdentityUser>(options => options
-                    .SignIn.RequireConfirmedAccount = true)
+                .AddDefaultIdentity<User>(options =>
+                {
+                    options.Password.RequireNonAlphanumeric = false;
+                })
                 .AddEntityFrameworkStores<PreviewerDbContext>();
 
             services.AddControllersWithViews();
