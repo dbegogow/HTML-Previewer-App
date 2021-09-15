@@ -23,7 +23,11 @@
 
     <div class="btns">
         <a>Save code</a>
-        <a>Check original</a>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a>Check original</a>
+        }
     </div>
 </div>
 

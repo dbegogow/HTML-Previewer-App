@@ -1,0 +1,44 @@
+﻿.samples-page-container {
+    width: 100%;
+    padding: 105px 0 0 65px;
+}
+
+.samples-page-container .heading {
+    margin: 0;
+    font-size: 1.9rem;
+    text-align: center;
+    color: #454545;
+}
+
+.samples-page-container .all-samples {
+    margin-top: 35px;
+    margin-bottom: 40px;
+    min-height: 40vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 50px;
+}
+
+.samples-page-container .all-samples .sample {
+    width: 300px;
+    height: 150px;
+    border: 1px solid #BFBFBF;
+    border-radius: 5px;
+    padding-top: 20px;
+}
+
+.samples-page-container .all-samples .sample:hover {
+    cursor: pointer;
+    border: 2px solid #000;
+    transform: scale(1.02);
+}
+
+.samples-page-container .all-samples .sample p {
+    margin-bottom: 15px;
+    margin-left: 15px;
+}
+
+.samples-page-container .all-samples .sample p span {
+    color: #5A5A5A;
+    margin-left: 15px;
+}
