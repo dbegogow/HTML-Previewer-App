@@ -38,6 +38,12 @@ namespace HTMLPreviewerApp
                 {
                     options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
                 });
+
+            services.AddRazorPages(options =>
+            {
+                options.Conventions.AddAreaPageRoute("Identity", "/Account/Register", "/Register");
+                options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", "/Login");
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
