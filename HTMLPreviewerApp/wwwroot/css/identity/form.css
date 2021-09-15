@@ -1,7 +1,7 @@
 ﻿.form-container {
     position: relative;
     top: 20vh;
-    height: 50vh;
+    height: 55vh;
     width: 35vw;
     margin: 0 auto;
     border: 1px solid #C3C3C3;
@@ -107,11 +107,5 @@
 
     .form-container form {
         margin: 0 50px;
-    }
-}
-
-@media (max-height: 700px) {
-    .form-container {
-        height: 50vh;
     }
 }
