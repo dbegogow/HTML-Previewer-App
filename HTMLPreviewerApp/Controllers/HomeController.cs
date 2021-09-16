@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using HTMLPreviewerApp.Models;
 using Microsoft.AspNetCore.Mvc;
-using HTMLPreviewerApp.Infrastructure;
 using HTMLPreviewerApp.Models.Samples;
 using HTMLPreviewerApp.Services.Samples;
 
@@ -20,7 +19,7 @@ namespace HTMLPreviewerApp.Controllers
 
             if (sample != null)
             {
-                return View(new SampleFormModel { Code = sample.Code });
+                return View(new SampleFormModel { Id = id, Code = sample.Code });
             }
 
             return View();

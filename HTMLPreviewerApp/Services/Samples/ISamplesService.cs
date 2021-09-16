@@ -7,6 +7,11 @@ namespace HTMLPreviewerApp.Services.Samples
     {
         void Save(string code, string userId);
 
+        void Edit(
+            string sampleId,
+            string code,
+            string userId);
+
         bool IsSampleExist(string sampleId, string userId);
 
         SampleCodeServiceModel SampleCode(string sampleId);

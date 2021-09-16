@@ -24,12 +24,30 @@ namespace HTMLPreviewerApp.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult SaveSample(SampleFormModel sample)
+        public IActionResult Save(SampleFormModel sample)
         {
             this._samples
                 .Save(sample.Code, User.Id());
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home", new { area = "" });
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Edit(SampleFormModel sample)
+        {
+            var isExist = this._samples
+                .IsSampleExist(sample.Id, User.Id());
+
+            if (!isExist)
+            {
+                return BadRequest();
+            }
+
+            this._samples
+                .Edit(sample.Id, sample.Code, User.Id());
+
+            return RedirectToAction("All", "Samples", new { area = "" });
         }
     }
 }

@@ -33,6 +33,21 @@ namespace HTMLPreviewerApp.Services.Samples
             this._data.SaveChanges();
         }
 
+        public void Edit(
+            string sampleId,
+            string code,
+            string userId)
+        {
+            var sample = this._data
+                .Samples
+                .Find(sampleId);
+
+            sample.Code = code;
+            sample.LastEdit = DateTime.Now;
+
+            this._data.SaveChanges();
+        }
+
         public bool IsSampleExist(string sampleId, string userId)
             => this._data
                 .Samples

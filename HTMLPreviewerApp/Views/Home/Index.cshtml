@@ -11,9 +11,11 @@
 <div class="home-page-container">
     <h1 class="heading">HTML Previewer</h1>
 
-    <form method="post" asp-controller="Samples" asp-action="SaveSample">
+    <form method="post" asp-controller="Samples" asp-action="@(Model == null ? "Save" : "Edit")">
         <div class="previewer-container">
             <div class="input-sample-container">
+                <input asp-for="Id" class="hide" />
+
                 <label asp-for="Code">Write your code here:</label>
                 <textarea asp-for="Code" id="code"></textarea>
             </div>
@@ -26,7 +28,7 @@
         </div>
 
         <div class="btns">
-            <input class="btn" type="submit" value="Save Code" />
+            <input class="btn" type="submit" value="@(Model == null ? "Save Code" : "Edit Code")" />
 
             @if (Model != null)
             {
