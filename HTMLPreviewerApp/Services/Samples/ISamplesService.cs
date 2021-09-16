@@ -7,6 +7,10 @@ namespace HTMLPreviewerApp.Services.Samples
     {
         void Save(string code, string userId);
 
-        IEnumerable<SampleServiceModel> All(string userId);
+        bool IsSampleExist(string sampleId, string userId);
+
+        SampleCodeServiceModel SampleCode(string sampleId);
+
+        IEnumerable<SampleInfoServiceModel> All(string userId);
     }
 }

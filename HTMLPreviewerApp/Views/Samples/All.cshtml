@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SampleServiceModel>
+﻿@model IEnumerable<SampleInfoServiceModel>
 
 @{
     ViewBag.Title = "All Samples";
@@ -14,7 +14,7 @@
     <div class="all-samples">
         @foreach (var sample in Model)
         {
-            <a class="sample">
+            <a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="@sample.Id" class="sample">
                 <p>Creation: <span>@sample.Creation</span></p>
                 <p>Last Edit date: <span>@sample.LastEdit</span></p>
             </a>

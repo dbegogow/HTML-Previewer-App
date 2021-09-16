@@ -33,12 +33,28 @@ namespace HTMLPreviewerApp.Services.Samples
             this._data.SaveChanges();
         }
 
-        public IEnumerable<SampleServiceModel> All(string userId)
+        public bool IsSampleExist(string sampleId, string userId)
+            => this._data
+                .Samples
+                .Any(s => s.Id == sampleId && s.UserId == userId);
+
+        public SampleCodeServiceModel SampleCode(string sampleId)
+            => this._data
+                .Samples
+                .Where(s => s.Id == sampleId)
+                .Select(s => new SampleCodeServiceModel
+                {
+                    Code = s.Code
+                })
+                .FirstOrDefault();
+
+        public IEnumerable<SampleInfoServiceModel> All(string userId)
             => this._data
                 .Samples
                 .Where(s => s.UserId == userId)
-                .Select(s => new SampleServiceModel
+                .Select(s => new SampleInfoServiceModel
                 {
+                    Id = s.Id,
                     Creation = s.Creation.ToString(DateTimeFormat),
                     LastEdit = s.LastEdit.ToString(DateTimeFormat)
                 })

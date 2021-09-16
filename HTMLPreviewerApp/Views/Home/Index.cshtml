@@ -20,6 +20,7 @@
             <div class="result-container">
                 <p>Result:</p>
                 <div id="result" class="result">
+                    @Html.Raw(Model?.Code)
                 </div>
             </div>
         </div>
@@ -27,7 +28,7 @@
         <div class="btns">
             <input class="btn" type="submit" value="Save Code" />
 
-            @if (User.Identity.IsAuthenticated)
+            @if (Model != null)
             {
                 <a class="btn">Check original</a>
             }
