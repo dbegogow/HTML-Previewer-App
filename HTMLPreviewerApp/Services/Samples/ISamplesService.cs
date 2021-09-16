@@ -14,6 +14,8 @@ namespace HTMLPreviewerApp.Services.Samples
 
         bool IsSampleExist(string sampleId, string userId);
 
+        bool CheckOriginal(string sampleId, string newCode);
+
         SampleCodeServiceModel SampleCode(string sampleId);
 
         IEnumerable<SampleInfoServiceModel> All(string userId);

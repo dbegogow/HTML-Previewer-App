@@ -140,6 +140,10 @@ button.header-link-btn {
     font-size: 1.3rem;
 }
 
+.info-message.hidden {
+    display: none;
+}
+
 .success-message {
     border: 3px solid #66F718;
 }
@@ -156,6 +160,10 @@ button.header-link-btn {
     color: #AD2E0F;
 }
 
-.info-message.hidden {
-    display: none;
+.check-original-message {
+    border: 3px solid #9C9C9C;
+}
+
+.check-original-message p {
+    color: #000;
 }

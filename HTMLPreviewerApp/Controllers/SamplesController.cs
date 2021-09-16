@@ -69,22 +69,5 @@ namespace HTMLPreviewerApp.Controllers
 
             return RedirectToAction("Index", "Home", new { area = "" });
         }
-
-        [Authorize]
-        [HttpPost]
-        public IActionResult Check(SampleFormModel sample)
-        {
-            var isExist = this._samples
-                .IsSampleExist(sample.Id, User.Id());
-
-            if (!isExist)
-            {
-                return BadRequest();
-            }
-
-            TempData[ErrorMessageKey] = InvalidSampleContent;
-
-            return RedirectToAction("Index", "Home", new { area = "" });
-        }
     }
 }

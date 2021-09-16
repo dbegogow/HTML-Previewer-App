@@ -47,16 +47,13 @@
     overflow-y: scroll;
 }
 
-.home-page-container .btns {
+.home-page-container .btn.first {
     margin-left: 8vw;
-    margin-top: 35px;
-}
-
-.home-page-container .btns .btn:first-child {
     margin-right: 20px;
 }
 
-.home-page-container .btns .btn {
+.home-page-container .btn {
+    margin-top: 35px;
     background: #EF852D;
     color: #FFF;
     padding: 8px 10px;
@@ -65,7 +62,7 @@
     border: none;
 }
 
-.home-page-container .btns .btn:hover {
+.home-page-container .btn:hover {
     cursor: pointer;
     opacity: 0.9;
 }

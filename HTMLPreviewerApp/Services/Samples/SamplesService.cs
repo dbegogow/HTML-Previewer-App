@@ -53,6 +53,17 @@ namespace HTMLPreviewerApp.Services.Samples
                 .Samples
                 .Any(s => s.Id == sampleId && s.UserId == userId);
 
+        public bool CheckOriginal(string sampleId, string newCode)
+        {
+            var sampleCode = this._data
+                .Samples
+                .Where(s => s.Id == sampleId)
+                .Select(s => s.Code)
+                .FirstOrDefault();
+
+            return sampleCode == newCode;
+        }
+
         public SampleCodeServiceModel SampleCode(string sampleId)
             => this._data
                 .Samples
