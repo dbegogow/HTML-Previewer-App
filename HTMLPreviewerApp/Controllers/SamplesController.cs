@@ -35,12 +35,12 @@ namespace HTMLPreviewerApp.Controllers
 
                 TempData[SuccessMessageKey] = SuccessfulSavedSample;
 
-                return RedirectToAction("All", "Samples", new { area = "" });
+                return RedirectToAction("All", "Samples", new { area = string.Empty });
             }
 
             TempData[ErrorMessageKey] = InvalidSampleContent;
 
-            return RedirectToAction("Index", "Home", new { area = "" });
+            return RedirectToAction("Index", "Home", new { area = string.Empty });
         }
 
         [Authorize]
@@ -62,12 +62,12 @@ namespace HTMLPreviewerApp.Controllers
 
                 TempData[SuccessMessageKey] = SuccessfulEditSample;
 
-                return RedirectToAction("All", "Samples", new { area = "" });
+                return RedirectToAction("All", "Samples", new { area = string.Empty });
             }
 
             TempData[ErrorMessageKey] = InvalidSampleContent;
 
-            return RedirectToAction("Index", "Home", new { area = "" });
+            return RedirectToAction("Index", "Home", new { area = string.Empty });
         }
     }
 }

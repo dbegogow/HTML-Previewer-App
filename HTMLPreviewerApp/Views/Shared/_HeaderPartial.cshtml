@@ -2,7 +2,7 @@
     <nav class="nav-container">
         <div class="btns">
             <div class="header-link-btn-container">
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="header-link-btn"><span>Home</span></a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="" class="header-link-btn"><span>Home</span></a>
             </div>
 
             @if (!User.Identity.IsAuthenticated)
@@ -20,7 +20,7 @@
                     <a asp-area="" asp-controller="Samples" asp-action="All" class="header-link-btn"><span>Samples</span></a>
                 </div>
                 <div class="header-link-btn-container">
-                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = string.Empty})">
+                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = string.Empty, id=string.Empty})">
                         <button type="submit" class="header-link-btn"><span>Logout</span></button>
                     </form>
                 </div>
