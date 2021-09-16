@@ -13,15 +13,21 @@ namespace HTMLPreviewerApp.Controllers
         public SamplesController(ISamplesService samples)
             => this._samples = samples;
 
+        [Authorize]
         public IActionResult All()
-            => View();
+        {
+            var samples = this._samples
+                .All(User.Id());
+
+            return View(samples);
+        }
 
         [Authorize]
         [HttpPost]
         public IActionResult SaveSample(SampleFormModel sample)
         {
             this._samples
-                .SaveSample(sample.Code, User.Id());
+                .Save(sample.Code, User.Id());
 
             return RedirectToAction("Index", "Home");
         }
