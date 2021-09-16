@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using HTMLPreviewerApp.Infrastructure;
+using HTMLPreviewerApp.Services.Conversions;
 using HTMLPreviewerApp.Services.Samples;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,6 +42,7 @@ namespace HTMLPreviewerApp
                 });
 
             services
+                .AddTransient<IConvert, Convert>()
                 .AddTransient<ISamplesService, SamplesService>();
 
             services.AddRazorPages(options =>

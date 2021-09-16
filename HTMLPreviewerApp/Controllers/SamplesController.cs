@@ -3,6 +3,7 @@ using HTMLPreviewerApp.Infrastructure;
 using HTMLPreviewerApp.Models.Samples;
 using HTMLPreviewerApp.Services.Samples;
 using Microsoft.AspNetCore.Authorization;
+using HTMLPreviewerApp.Services.Conversions;
 
 using static HTMLPreviewerApp.WebConstants;
 
@@ -10,10 +11,18 @@ namespace HTMLPreviewerApp.Controllers
 {
     public class SamplesController : Controller
     {
-        private readonly ISamplesService _samples;
+        private const int MaxCodeSizeInMb = 5;
 
-        public SamplesController(ISamplesService samples)
-            => this._samples = samples;
+        private readonly ISamplesService _samples;
+        private readonly IConvert _convert;
+
+        public SamplesController(
+            ISamplesService samples,
+            IConvert convert)
+        {
+            this._samples = samples;
+            this._convert = convert;
+        }
 
         [Authorize]
         public IActionResult All()
@@ -28,19 +37,27 @@ namespace HTMLPreviewerApp.Controllers
         [HttpPost]
         public IActionResult Save(SampleFormModel sample)
         {
-            if (ModelState.IsValid)
+            var size = this._convert
+                .ConvertBytesToMegabytes(sample.Code);
+
+            if (size > MaxCodeSizeInMb)
             {
-                this._samples
-                    .Save(sample.Code, User.Id());
-
-                TempData[SuccessMessageKey] = SuccessfulSavedSample;
-
-                return RedirectToAction("All", "Samples", new { area = string.Empty });
+                TempData[ErrorMessageKey] = InvalidSampleSize;
+                return RedirectToAction("Index", "Home", new { area = string.Empty });
             }
 
-            TempData[ErrorMessageKey] = InvalidSampleContent;
+            if (!ModelState.IsValid)
+            {
+                TempData[ErrorMessageKey] = InvalidSampleContent;
+                return RedirectToAction("Index", "Home", new { area = string.Empty });
+            }
 
-            return RedirectToAction("Index", "Home", new { area = string.Empty });
+            this._samples
+                .Save(sample.Code, User.Id());
+
+            TempData[SuccessMessageKey] = SuccessfulSavedSample;
+
+            return RedirectToAction("All", "Samples", new { area = string.Empty });
         }
 
         [Authorize]
@@ -55,19 +72,28 @@ namespace HTMLPreviewerApp.Controllers
                 return BadRequest();
             }
 
-            if (ModelState.IsValid)
+            var size = this._convert
+                .ConvertBytesToMegabytes(sample.Code);
+
+            if (size > MaxCodeSizeInMb)
             {
-                this._samples
-                    .Edit(sample.Id, sample.Code, User.Id());
-
-                TempData[SuccessMessageKey] = SuccessfulEditSample;
-
-                return RedirectToAction("All", "Samples", new { area = string.Empty });
+                TempData[ErrorMessageKey] = InvalidSampleSize;
+                return RedirectToAction("Index", "Home", new { area = string.Empty });
             }
 
-            TempData[ErrorMessageKey] = InvalidSampleContent;
+            if (!ModelState.IsValid)
+            {
+                TempData[ErrorMessageKey] = InvalidSampleContent;
 
-            return RedirectToAction("Index", "Home", new { area = string.Empty });
+                return RedirectToAction("Index", "Home", new { area = string.Empty });
+            }
+
+            this._samples
+                .Edit(sample.Id, sample.Code, User.Id());
+
+            TempData[SuccessMessageKey] = SuccessfulEditSample;
+
+            return RedirectToAction("All", "Samples", new { area = string.Empty });
         }
     }
 }
