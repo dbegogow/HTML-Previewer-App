@@ -118,3 +118,44 @@ button.header-link-btn {
     width: 100%;
     text-align: center;
 }
+
+.info-message {
+    margin: 0;
+    position: relative;
+    top: 90px;
+    z-index: 3;
+    width: 40vw;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    height: 50px;
+    border-radius: 7px;
+}
+
+.info-message p {
+    margin: 0;
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.success-message {
+    border: 3px solid #66F718;
+}
+
+.success-message p {
+    color: #3E8D13;
+}
+
+.error-message {
+    border: 3px solid #F83C0D;
+}
+
+.error-message p {
+    color: #AD2E0F;
+}
+
+.info-message.hidden {
+    display: none;
+}

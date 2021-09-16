@@ -4,6 +4,8 @@ using HTMLPreviewerApp.Models.Samples;
 using HTMLPreviewerApp.Services.Samples;
 using Microsoft.AspNetCore.Authorization;
 
+using static HTMLPreviewerApp.WebConstants;
+
 namespace HTMLPreviewerApp.Controllers
 {
     public class SamplesController : Controller
@@ -26,8 +28,17 @@ namespace HTMLPreviewerApp.Controllers
         [HttpPost]
         public IActionResult Save(SampleFormModel sample)
         {
-            this._samples
-                .Save(sample.Code, User.Id());
+            if (ModelState.IsValid)
+            {
+                this._samples
+                    .Save(sample.Code, User.Id());
+
+                TempData[SuccessMessageKey] = SuccessfulSavedSample;
+
+                return RedirectToAction("All", "Samples", new { area = "" });
+            }
+
+            TempData[ErrorMessageKey] = InvalidSampleContent;
 
             return RedirectToAction("Index", "Home", new { area = "" });
         }
@@ -44,10 +55,36 @@ namespace HTMLPreviewerApp.Controllers
                 return BadRequest();
             }
 
-            this._samples
-                .Edit(sample.Id, sample.Code, User.Id());
+            if (ModelState.IsValid)
+            {
+                this._samples
+                    .Edit(sample.Id, sample.Code, User.Id());
 
-            return RedirectToAction("All", "Samples", new { area = "" });
+                TempData[SuccessMessageKey] = SuccessfulEditSample;
+
+                return RedirectToAction("All", "Samples", new { area = "" });
+            }
+
+            TempData[ErrorMessageKey] = InvalidSampleContent;
+
+            return RedirectToAction("Index", "Home", new { area = "" });
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Check(SampleFormModel sample)
+        {
+            var isExist = this._samples
+                .IsSampleExist(sample.Id, User.Id());
+
+            if (!isExist)
+            {
+                return BadRequest();
+            }
+
+            TempData[ErrorMessageKey] = InvalidSampleContent;
+
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
     }
 }

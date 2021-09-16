@@ -14,6 +14,19 @@
 <body>
     <partial name="_HeaderPartial" />
     <div>
+        @if (TempData.ContainsKey(WebConstants.SuccessMessageKey))
+        {
+            <div class="info-message success-message">
+                <p>@TempData[WebConstants.SuccessMessageKey]</p>
+            </div>
+        }
+
+        @if (TempData.ContainsKey(WebConstants.ErrorMessageKey))
+        {
+            <div class="info-message error-message">
+                <p>@TempData[WebConstants.ErrorMessageKey]</p>
+            </div>
+        }
         <main>
             @RenderBody()
         </main>
@@ -24,6 +37,7 @@
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/shared/infoMessage.js"></script>
 
     @await RenderSectionAsync("IndexScript", required: false)
     @await RenderSectionAsync("ValidationScript", required: false)
