@@ -19,7 +19,7 @@
 }
  
 .home-page-container .previewer-container .input-sample-container label,
-.home-page-container .previewer-container .result-container p {
+.home-page-container .previewer-container .result-container .result-paragraph {
     display: inline-block;
     height: 50px;
     font-size: 1.3rem;
